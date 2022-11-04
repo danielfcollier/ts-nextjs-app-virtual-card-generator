@@ -48,10 +48,16 @@ export default function Generate() {
 
   const addQueryString = (previousValue: string, currentValue: LinkProps) => {
     if (currentValue.link === null) {
-      return previousValue;
+      return `${previousValue}`;
     }
-    const queryParam = `&${currentValue.id}=${currentValue.link}`;
-    return `${previousValue}${queryParam}`;
+
+    const queryParam = `${currentValue.id}=${currentValue.link}`;
+
+    if (previousValue.includes('=')) {
+      return `${previousValue}&${queryParam}`;
+    }
+
+    return `${previousValue}?${queryParam}`;
   };
 
   const handleSubmit = async (event: FormEvent) => {
