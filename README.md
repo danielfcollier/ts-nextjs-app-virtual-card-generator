@@ -4,9 +4,9 @@
 
 - [Demo Version](#demo-version)
 - [Build and Run](#build-and-run)
-- [Configurations](#configurations)
 - [Run Tests](#run-tests)
 - [CI-CD](#ci-cd)
+- [Configurations](#configurations)
 - [References](#references)
 
 ## Demo Version
@@ -46,11 +46,11 @@ npm run test:ci
 
 ### GitHub Actions
 
-Tests are configured to run tests on multiple OS and Node.js versions to make sure the app is compatible across many platforms.
+Tests are configured to run on multiple OS and Node.js versions to make sure the app is compatible across many platforms.
 
 ### Deployment on Vercel
 
-If tests are passing, the CI-CD push changes to a `production` branch, which it is linked to a CD with Vercel.
+If tests are passing, the CI with GitHub Actions pushes the changes to a `production` branch, which it is linked to a CD with Vercel.
 
 ## Configurations
 
