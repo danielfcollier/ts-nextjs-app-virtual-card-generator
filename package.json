@@ -8,7 +8,9 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "html-to-image": "^1.10.8",
     "next": "latest",
+    "qrcode": "^1.5.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
