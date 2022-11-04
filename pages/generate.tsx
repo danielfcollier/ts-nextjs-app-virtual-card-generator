@@ -66,6 +66,7 @@ export default function Generate() {
     const baseUrl = `${process.env.NEXT_PUBLIC_HOST_URL}/${encodeURIComponent(states.name)}`;
     const linkUrl = states.links.reduce(addQueryString, baseUrl);
     const qrCode = await QRCode.toDataURL(linkUrl);
+    console.log({ linkUrl }); // Just to make it easier to verify on the browser
     setStates({ ...states, qrCode });
 
     if (imageRef.current === null) {
