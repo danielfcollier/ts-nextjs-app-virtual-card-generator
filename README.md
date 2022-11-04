@@ -3,17 +3,17 @@
 ## Table of Contents
 
 - [Demo Version](#demo-version)
-- [Build and Run][#build-run]
-- [Configurations][#configurations]
-- [Tests and CI Pipeline][#tests-and-ci]
-- [References][#references]
+- [Build and Run](#build-run)
+- [Configurations](#configurations)
+- [Tests and CI Pipeline](#tests-and-ci)
+- [References](#references)
 
-## Demo Version [#demo-version]:
+## Demo Version {#demo-version}
 
 Access the following URL to see the app running:
 http://localhost:3000/Daniel?github=https://github.com/danielfcollier&linkedin=https://linkedin.com/in/danielfcollier
 
-## [Build and Run the App](#build-run)
+## Build and Run the App {#build-run}
 
 ### Locally:
 
@@ -36,17 +36,17 @@ docker build -t virtual-card-generator .
 docker run -p 3000:3000 virtual-card-generator
 ```
 
-## [Run Tests](#tests-and-ci)
+## Run Tests {#tests-and-ci}
 
 ```bash
 npm run test:ci
 ```
 
-## [Configurations](#configurations)
+## Configurations {#configurations}
 
 Setup the `.env.development` to configure local environment variables. And, use `.env.production` to setup production variables.
 
-## [References](#references)
+## References {#references}
 
 ### Base template created with:
 
