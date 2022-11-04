@@ -3,17 +3,18 @@
 ## Table of Contents
 
 - [Demo Version](#demo-version)
-- [Build and Run](#build-run)
+- [Build and Run](#build-and-run)
 - [Configurations](#configurations)
-- [Tests and CI Pipeline](#tests-and-ci)
+- [Run Tests](#run-tests)
+- [CI-CD](#ci-cd)
 - [References](#references)
 
-## Demo Version {#demo-version}
+## Demo Version
 
 Access the following URL to see the app running:
 http://localhost:3000/Daniel?github=https://github.com/danielfcollier&linkedin=https://linkedin.com/in/danielfcollier
 
-## Build and Run the App {#build-run}
+## Build and Run the App
 
 ### Locally:
 
@@ -36,17 +37,26 @@ docker build -t virtual-card-generator .
 docker run -p 3000:3000 virtual-card-generator
 ```
 
-## Run Tests {#tests-and-ci}
+## Run Tests
 
 ```bash
 npm run test:ci
 ```
+## CI-CD
 
-## Configurations {#configurations}
+### GitHub Actions
+
+Tests are configured to run tests on multiple OS and Node.js versions to make sure the app is compatible across many platforms.
+
+### Deployment on Vercel
+
+If tests are passing, the CI-CD push changes to a `production` branch, which it is linked to a CD with Vercel.
+
+## Configurations
 
 Setup the `.env.development` to configure local environment variables. And, use `.env.production` to setup production variables.
 
-## References {#references}
+## References
 
 ### Base template created with:
 
