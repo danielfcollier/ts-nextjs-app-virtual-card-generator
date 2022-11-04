@@ -1,29 +1,66 @@
-# Next.js + Jest
+# Virtual Card Generator
 
-This example shows how to configure Jest to work with Next.js.
+## Table of Contents
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+- [Demo Version](#demo-version)
+- [Build and Run][#build-run]
+- [Configurations][#configurations]
+- [Tests and CI Pipeline][#tests-and-ci]
+- [References][#references]
 
-## How to Use
+## Demo Version [#demo-version]:
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
+Access the following URL to see the app running:
+http://localhost:3000/Daniel?github=https://github.com/danielfcollier&linkedin=https://linkedin.com/in/danielfcollier
 
-In your terminal, run the following command:
+## [Build and Run the App](#build-run)
 
-```bash
-npx create-next-app --example with-jest with-jest-app
-```
-
-```bash
-yarn create next-app --example with-jest with-jest-app
-```
-
-```bash
-pnpm create next-app --example with-jest with-jest-app
-```
-
-## Run Jest Tests
+### Locally:
 
 ```bash
-npm test
+npm install
+npm run build
+npm start
 ```
+
+### Development:
+
+```bash
+npm run dev
+```
+
+### With Docker:
+
+```bash
+docker build -t virtual-card-generator .
+docker run -p 3000:3000 virtual-card-generator
+```
+
+## [Run Tests](#tests-and-ci)
+
+```bash
+npm run test:ci
+```
+
+## [Configurations](#configurations)
+
+Setup the `.env.development` to configure local environment variables. And, use `.env.production` to setup production variables.
+
+## [References](#references)
+
+### Base template created with:
+
+```bash
+npx create-next-app --example with-jest ts-nextjs-app-virtual-card-generator
+```
+
+https://github.com/vercel/next.js/tree/canary/examples/with-jest
+
+### Base dockerfile created with:
+
+https://github.com/vercel/next.js/tree/canary/examples/with-docker
+
+
+### Vercel Environment Variables
+
+https://vercel.com/docs/concepts/projects/environment-variables
