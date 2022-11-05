@@ -3,25 +3,17 @@ import { useRouter } from 'next/router';
 import LinkButton from 'components/LinkButton';
 import PageHeader from 'components/PageHeader';
 
+import { cards } from 'config/cards';
+
 export default function History() {
   const router = useRouter();
-  const { name, linkedin, github } = router.query;
+  const { name } = router.query;
 
-  const cards = [];
-
-  if (linkedin) {
-    cards.push({
-      label: 'LinkedIn',
-      link: linkedin as string,
-    });
-  }
-
-  if (github) {
-    cards.push({
-      label: 'GitHub',
-      link: github as string,
-    });
-  }
+  Object.keys(cards).forEach((key) => {
+    if (router.query[key]) {
+      cards[key].url = router.query[key] as string;
+    }
+  });
 
   return (
     <>
@@ -34,8 +26,8 @@ export default function History() {
       <p>Lorem ipsum dolor sit amet, consectetur</p>
 
       <div>
-        {cards.map((card, index) => {
-          return <LinkButton key={index} link={card.link} label={card.label} />;
+        {Object.keys(cards).map((key) => {
+          return <LinkButton key={key} link={cards[key].url as string} label={cards[key].label} />;
         })}
       </div>
     </>

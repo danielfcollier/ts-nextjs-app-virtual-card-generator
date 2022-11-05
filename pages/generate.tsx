@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useState, useRef } from 'react';
+import { ChangeEvent, FormEvent, useState, useRef } from 'react';
 import Image from 'next/image';
 
 import download from 'downloadjs';
@@ -7,33 +7,18 @@ import QRCode from 'qrcode';
 
 import PageHeader from 'components/PageHeader';
 
-interface LinkProps {
-  id: string;
-  label: string;
-  link: string | null;
-}
+import { Card, cards } from 'config/cards';
 
 interface States {
   name: string;
   qrCode: string;
-  links: LinkProps[];
+  cards: Card;
 }
 
 const initialStates: States = {
-  name: 'Daniel',
+  cards,
   qrCode: '',
-  links: [
-    {
-      id: 'linkedin',
-      label: 'LinkedIn URL',
-      link: 'https://linkedin.com/in/danielfcollier',
-    },
-    {
-      id: 'github',
-      label: 'GitHub URL',
-      link: 'https://github.com/danielfcollier',
-    },
-  ],
+  name: 'Daniel',
 };
 
 export default function Generate() {
@@ -42,16 +27,29 @@ export default function Generate() {
   const imageRef = useRef<HTMLDivElement>(null);
 
   const handleStates = (event: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = event.target;
-    setStates({ ...states, [id]: value });
+    const { id, value, className } = event.target;
+    if (className === 'cards') {
+      setStates({
+        ...states,
+        cards: {
+          ...states.cards,
+          [id]: {
+            ...states.cards[id],
+            url: value,
+          },
+        },
+      });
+    } else {
+      setStates({ ...states, [id]: value });
+    }
   };
 
-  const addQueryString = (previousValue: string, currentValue: LinkProps) => {
-    if (currentValue.link === null) {
+  const addQueryString = (previousValue: string, currentValue: Card) => {
+    if (currentValue.url === null) {
       return `${previousValue}`;
     }
 
-    const queryParam = `${currentValue.id}=${currentValue.link}`;
+    const queryParam = `${currentValue.id}=${currentValue.url}`;
 
     if (previousValue.includes('=')) {
       return `${previousValue}&${queryParam}`;
@@ -64,7 +62,11 @@ export default function Generate() {
     event.preventDefault();
 
     const baseUrl = `${process.env.NEXT_PUBLIC_HOST_URL}/${encodeURIComponent(states.name)}`;
-    const linkUrl = states.links.reduce(addQueryString, baseUrl);
+    const linkUrl = Object.keys(states.cards)
+      .map((key) => {
+        return { ...states.cards[key], id: key } as unknown as Card;
+      })
+      .reduce(addQueryString, baseUrl);
     const qrCode = await QRCode.toDataURL(linkUrl);
     console.log({ linkUrl }); // Just to make it easier to verify on the browser
     setStates({ ...states, qrCode });
@@ -95,16 +97,17 @@ export default function Generate() {
           <br />
         </label>
 
-        {states.links.map((link) => {
+        {Object.keys(states.cards).map((key) => {
           return (
-            <label key={link.id}>
-              {link.label}
+            <label key={key}>
+              {states.cards[key].label}
               <input
-                defaultValue={link.link as string}
+                className="cards"
+                defaultValue={states.cards[key].url as string}
                 onChange={handleStates}
                 type="text"
-                name={link.id}
-                id={link.id}
+                name={key}
+                id={key}
               />
               <br />
             </label>
