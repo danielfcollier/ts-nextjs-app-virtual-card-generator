@@ -42,6 +42,7 @@ docker run -p 3000:3000 virtual-card-generator
 ```bash
 npm run test:ci
 ```
+
 ## CI-CD
 
 ### GitHub Actions
@@ -56,11 +57,11 @@ act -a tests
 
 ### Deployment on Vercel
 
-If tests are passing, the CI with GitHub Actions pushes the changes to a `production` branch, which it is linked to a CD with Vercel.
+If tests are passing, the CI with GitHub Actions pushes the changes to a production branch (`prod`), which is linked to a CD with Vercel.
 
 ## Configurations
 
-Setup the `.env.development` to configure local environment variables. And, use `.env.production` to setup production variables.
+Set up the file `.env.development` to configure local environment variables. And, use the file `.env.production` to set up production variables.
 
 ## References
 
@@ -75,7 +76,6 @@ https://github.com/vercel/next.js/tree/canary/examples/with-jest
 ### Base dockerfile created with:
 
 https://github.com/vercel/next.js/tree/canary/examples/with-docker
-
 
 ### Vercel Environment Variables
 
