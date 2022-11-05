@@ -48,6 +48,12 @@ npm run test:ci
 
 Tests are configured to run on multiple OS and Node.js versions to make sure the app is compatible across many platforms.
 
+#### Test locally with `act`
+
+```bash
+act -a tests
+```
+
 ### Deployment on Vercel
 
 If tests are passing, the CI with GitHub Actions pushes the changes to a `production` branch, which it is linked to a CD with Vercel.
@@ -74,3 +80,7 @@ https://github.com/vercel/next.js/tree/canary/examples/with-docker
 ### Vercel Environment Variables
 
 https://vercel.com/docs/concepts/projects/environment-variables
+
+### Test GitHub Actions Locally
+
+https://github.com/nektos/act
