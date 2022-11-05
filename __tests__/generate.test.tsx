@@ -1,12 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import Home from '@/pages/index'
 
-describe('Home', () => {
+describe('Generate Page Elements', () => {
   it('renders a heading', () => {
-    render(<Home />)
+    render(<h1>QR Code Image Generator</h1>)
 
     const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js!/i,
+      name: "QR Code Image Generator",
     })
 
     expect(heading).toBeInTheDocument()

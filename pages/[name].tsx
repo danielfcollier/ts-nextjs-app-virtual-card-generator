@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 
-import LinkButton from 'components/LinkButton';
-import PageHeader from 'components/PageHeader';
+import LinkButton from '@/components/LinkButton';
+import PageHeader from '@/components/PageHeader';
 
-import { cards } from 'config/cards';
+import { cards } from '../config/cards';
 
 export default function History() {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
-import Home from '@/pages/index'
+import Generate from '@/pages/generate'
 
 it('renders homepage unchanged', () => {
-  const { container } = render(<Home />)
+  const { container } = render(<Generate />)
   expect(container).toMatchSnapshot()
 })

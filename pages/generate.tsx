@@ -5,9 +5,9 @@ import download from 'downloadjs';
 import { toPng } from 'html-to-image';
 import QRCode from 'qrcode';
 
-import PageHeader from 'components/PageHeader';
+import PageHeader from '@/components/PageHeader';
 
-import { Card, cards } from 'config/cards';
+import { Card, cards } from '../config/cards';
 
 interface States {
   name: string;
