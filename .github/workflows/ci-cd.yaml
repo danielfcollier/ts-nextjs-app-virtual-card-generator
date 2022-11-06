@@ -38,6 +38,9 @@ jobs:
       - name: Build
         run: npm run build --if-present
 
+      - name: Update Test Snapshots
+        run: npx jest --updateSnapshot
+
       - name: Tests
         run: npm run test:ci
 

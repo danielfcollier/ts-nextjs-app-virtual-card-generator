@@ -1,11 +1,11 @@
-import { ChangeEvent, FormEvent, useState, useRef } from 'react';
-import Image from 'next/image';
-
+import { ChangeEvent, FormEvent, useState, useRef, useEffect } from 'react';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import download from 'downloadjs';
 import { toPng } from 'html-to-image';
 import QRCode from 'qrcode';
 
 import PageHeader from '@/components/PageHeader';
+import VirtualCard from '@/components/VirtualCard';
 
 import { Card, cards } from '../config/cards';
 
@@ -70,62 +70,55 @@ export default function Generate() {
     const qrCode = await QRCode.toDataURL(linkUrl);
     console.log({ linkUrl }); // Just to make it easier to verify on the browser
     setStates({ ...states, qrCode });
+  };
 
+  useEffect(() => {
     if (imageRef.current === null) {
       return;
     }
 
-    download(await toPng(imageRef.current), 'virtual-card.png');
-  };
+    const downloadImage = async (current: HTMLDivElement) => {
+      download(await toPng(current), 'virtual-card.png');
+      setStates({ ...states, qrCode: '' });
+    };
+
+    downloadImage(imageRef.current);
+  }, [states, imageRef]);
 
   return (
-    <div>
+    <div className="container">
       <PageHeader name={'Virtual Card'} />
 
-      <h1>QR Code Image Generator</h1>
+      <h1 className="title">QR Code Image Generator</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            defaultValue={states.name}
-            onChange={handleStates}
-            type="text"
-            name="name"
-            id="name"
-          />
-          <br />
-        </label>
+      <InputGroup className="mb-3">
+        <InputGroup.Text>Name</InputGroup.Text>
+        <Form.Control id="name" defaultValue={states.name} onChange={handleStates} />
+      </InputGroup>
 
-        {Object.keys(states.cards).map((key) => {
-          return (
-            <label key={key}>
-              {states.cards[key].label}
-              <input
-                className="cards"
-                defaultValue={states.cards[key].url as string}
-                onChange={handleStates}
-                type="text"
-                name={key}
-                id={key}
-              />
-              <br />
-            </label>
-          );
-        })}
+      {Object.keys(states.cards).map((key) => {
+        return (
+          <InputGroup className="mb-3" key={key}>
+            <InputGroup.Text>{states.cards[key].label}</InputGroup.Text>
+            <Form.Control
+              className="cards"
+              id={key}
+              defaultValue={states.cards[key].url as string}
+              onChange={handleStates}
+            />
+          </InputGroup>
+        );
+      })}
 
-        <input type="submit" value="Generate Image" />
+      <Button className="button" size="lg" variant="outline-dark" onClick={handleSubmit}>
+        Generate Image
+      </Button>
 
-        {states.qrCode && (
-          <div ref={imageRef} id="virtual-card">
-            {states.name}
-            <br />
-            Scan me
-            <br />
-            <Image src={states.qrCode} width="100" height="100" alt="qrCode" />
-          </div>
-        )}
-      </form>
+      {states.qrCode && (
+        <div ref={imageRef} className="virtual-card">
+          <VirtualCard name={states.name} qrCode={states.qrCode}/>
+        </div>
+      )}
     </div>
   );
 }
