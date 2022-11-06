@@ -1,7 +1,9 @@
+import { Button } from 'react-bootstrap';
+
 interface Props {
   label: string;
   link: string;
-};
+}
 
 export default function LinkButton(props: Props) {
   const { label, link } = props;
@@ -9,7 +11,9 @@ export default function LinkButton(props: Props) {
   return (
     <>
       <a href={link}>
-        <button>{label}</button>
+        <Button className="button" size="lg" variant="outline-dark">
+          {label}
+        </Button>
       </a>
     </>
   );
