@@ -52,3 +52,7 @@ h1 {
   max-width: 900px;
   text-align: left;
 }
+
+.row>* {
+  padding-left: 0;
+}
