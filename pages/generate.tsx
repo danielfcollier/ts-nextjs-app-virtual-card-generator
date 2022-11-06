@@ -18,7 +18,7 @@ interface States {
 const initialStates: States = {
   cards,
   qrCode: '',
-  name: 'Daniel',
+  name: '',
 };
 
 export default function Generate() {
