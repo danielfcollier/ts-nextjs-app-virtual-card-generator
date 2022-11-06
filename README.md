@@ -40,6 +40,7 @@ docker run -p 3000:3000 virtual-card-generator
 ## Run Tests
 
 ```bash
+npx jest --updateSnapshot
 npm run test:ci
 ```
 
