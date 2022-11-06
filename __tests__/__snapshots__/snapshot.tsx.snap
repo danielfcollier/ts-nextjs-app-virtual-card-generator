@@ -2,48 +2,62 @@
 
 exports[`renders homepage unchanged 1`] = `
 <div>
-  <div>
-    <h1>
+  <div
+    class="container"
+  >
+    <h1
+      class="title"
+    >
       QR Code Image Generator
     </h1>
-    <form>
-      <label>
+    <div
+      class="mb-3 input-group"
+    >
+      <span
+        class="input-group-text"
+      >
         Name
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value="Daniel"
-        />
-        <br />
-      </label>
-      <label>
-        LinkedIn URL
-        <input
-          class="cards"
-          id="linkedin"
-          name="linkedin"
-          type="text"
-          value="https://linkedin.com/in/danielfcollier"
-        />
-        <br />
-      </label>
-      <label>
-        GitHub URL
-        <input
-          class="cards"
-          id="github"
-          name="github"
-          type="text"
-          value="https://github.com/danielfcollier"
-        />
-        <br />
-      </label>
+      </span>
       <input
-        type="submit"
-        value="Generate Image"
+        class="form-control"
+        id="name"
+        value="Daniel"
       />
-    </form>
+    </div>
+    <div
+      class="mb-3 input-group"
+    >
+      <span
+        class="input-group-text"
+      >
+        LinkedIn URL
+      </span>
+      <input
+        class="cards form-control"
+        id="linkedin"
+        value="https://linkedin.com/in/danielfcollier"
+      />
+    </div>
+    <div
+      class="mb-3 input-group"
+    >
+      <span
+        class="input-group-text"
+      >
+        GitHub URL
+      </span>
+      <input
+        class="cards form-control"
+        id="github"
+        value="https://github.com/danielfcollier"
+      />
+    </div>
+    <button
+      class="button btn btn-outline-dark btn-lg"
+      type="button"
+    >
+      Generate Image
+    </button>
   </div>
 </div>
 `;

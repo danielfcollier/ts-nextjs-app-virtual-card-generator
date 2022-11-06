@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
+import { Container, Row } from 'react-bootstrap';
 
-import LinkButton from '@/components/LinkButton';
+import CardButton from '@/components/CardButton';
 import PageHeader from '@/components/PageHeader';
 
 import { cards } from '../config/cards';
@@ -16,7 +17,7 @@ export default function History() {
   });
 
   return (
-    <>
+    <div className="card-container">
       <PageHeader name={name} />
 
       <p>Hello, my name is {name}</p>
@@ -25,11 +26,15 @@ export default function History() {
 
       <p>Lorem ipsum dolor sit amet, consectetur</p>
 
-      <div>
-        {Object.keys(cards).map((key) => {
-          return <LinkButton key={key} link={cards[key].url as string} label={cards[key].label} />;
-        })}
-      </div>
-    </>
+      <Container>
+        <Row className="row" sm={6} xs={2}>
+          {Object.keys(cards).map((key) => {
+            return (
+              <CardButton key={key} link={cards[key].url as string} label={cards[key].label} />
+            );
+          })}
+        </Row>
+      </Container>
+    </div>
   );
 }

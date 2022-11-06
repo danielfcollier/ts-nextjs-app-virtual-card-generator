@@ -8,11 +8,14 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@types/react-bootstrap": "^0.32.31",
+    "bootstrap": "^5.2.2",
     "downloadjs": "^1.4.7",
     "html-to-image": "^1.10.8",
     "next": "latest",
     "qrcode": "^1.5.1",
     "react": "^18.1.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
