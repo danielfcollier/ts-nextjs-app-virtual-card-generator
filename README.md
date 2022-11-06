@@ -12,7 +12,10 @@
 ## Demo Version
 
 Access the following URL to see the app running:
-http://localhost:3000/Daniel?github=https://github.com/danielfcollier&linkedin=https://linkedin.com/in/danielfcollier
+https://ts-nextjs-app-virtual-card-generator.vercel.app
+
+Use this URL to see a valid virtual card page:
+https://ts-nextjs-app-virtual-card-generator.vercel.app/Daniel?github=https://github.com/danielfcollier&linkedin=https://linkedin.com/in/danielfcollier
 
 ## Build and Run the App
 
