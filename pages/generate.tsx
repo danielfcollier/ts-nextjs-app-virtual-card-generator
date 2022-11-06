@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState, useRef } from 'react';
+import { ChangeEvent, FormEvent, useState, useRef, useEffect } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import download from 'downloadjs';
 import { toPng } from 'html-to-image';
@@ -70,13 +70,20 @@ export default function Generate() {
     const qrCode = await QRCode.toDataURL(linkUrl);
     console.log({ linkUrl }); // Just to make it easier to verify on the browser
     setStates({ ...states, qrCode });
+  };
 
+  useEffect(() => {
     if (imageRef.current === null) {
       return;
     }
 
-    download(await toPng(imageRef.current), 'virtual-card.png');
-  };
+    const downloadImage = async (current: HTMLDivElement) => {
+      download(await toPng(current), 'virtual-card.png');
+      setStates({ ...states, qrCode: '' });
+    };
+
+    downloadImage(imageRef.current);
+  }, [states, imageRef]);
 
   return (
     <div className="container">
@@ -109,7 +116,7 @@ export default function Generate() {
 
       {states.qrCode && (
         <div ref={imageRef} className="virtual-card">
-          <VirtualCard name={states.name} qrCode={states.qrCode} />
+          <VirtualCard name={states.name} qrCode={states.qrCode}/>
         </div>
       )}
     </div>
