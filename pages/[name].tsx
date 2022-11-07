@@ -8,7 +8,7 @@ import { cards } from '../config/cards';
 
 const sortWordsAscending = (a: string, b: string) => {
   return a.localeCompare(b);
-}
+};
 
 export default function History() {
   const router = useRouter();
@@ -32,11 +32,14 @@ export default function History() {
 
       <Container>
         <Row className="row" sm={6} xs={2}>
-          {Object.keys(cards).sort(sortWordsAscending).map((key) => {
-            return (
-              <CardButton key={key} link={cards[key].url as string} label={cards[key].label} />
-            );
-          })}
+          {Object.keys(cards)
+            .sort(sortWordsAscending)
+            .filter(key => cards[key].url !== '')
+            .map(key => {
+              return (
+                <CardButton key={key} link={cards[key].url as string} label={cards[key].label} />
+              );
+            })}
         </Row>
       </Container>
     </div>
