@@ -86,10 +86,10 @@ export default function Generate() {
 
     const baseUrl = `${process.env.NEXT_PUBLIC_HOST_URL}/${encodeURIComponent(states.name)}`;
     const linkUrl = Object.keys(states.cards)
-    .map((key) => {
-      return { ...states.cards[key], id: key } as unknown as Card;
-    })
-    .reduce(addQueryString, baseUrl);
+      .map((key) => {
+        return { ...states.cards[key], id: key } as unknown as Card;
+      })
+      .reduce(addQueryString, baseUrl);
     const qrCode = await QRCode.toDataURL(linkUrl);
     console.log({ linkUrl }); // Just to make it easier to verify on the browser
     setStates({ ...states, qrCode });
