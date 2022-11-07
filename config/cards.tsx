@@ -23,7 +23,7 @@ export const cards: Card = {
     label: 'LinkedIn URL',
     inValidation: (value: string) => {
       const regex = /^(https:\/\/)?(www\.)??(linkedin\.com\/in\/){1}(.)+/g;
-      const isInvalid = !regex.test(value);
+      const isInvalid = value === '' ? false : !regex.test(value);
       return isInvalid;
     },
   },
@@ -34,7 +34,7 @@ export const cards: Card = {
     label: 'GitHub URL',
     inValidation: (value: string) => {
       const regex = /^(https:\/\/)?(www\.)??(github\.com\/){1}(.)+/g;
-      const isInvalid = !regex.test(value);
+      const isInvalid = value === '' ? false : !regex.test(value);
       return isInvalid;
     },
   },
