@@ -10,9 +10,13 @@ interface Props {
 export default function CardButton(props: Props) {
   const { label, link } = props;
 
+  const regex = /^http(s)??:\/\//g;
+  const hasUrlPrefix = regex.test(link);
+  const url = hasUrlPrefix ? link : `https://${link}`;
+
   return (
     <>
-      <a href={link}>
+      <a href={url}>
         <Button className="button" variant="outline-dark">
           {label}
         </Button>
