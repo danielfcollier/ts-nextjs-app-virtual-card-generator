@@ -24,7 +24,7 @@ https://ts-nextjs-app-virtual-card-generator.vercel.app/Daniel?github=https://gi
 ```bash
 npm install
 npm run build
-npm start
+npm run dev
 ```
 
 ### Development:
