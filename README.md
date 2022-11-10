@@ -24,13 +24,19 @@ https://ts-nextjs-app-virtual-card-generator.vercel.app/Daniel?github=https://gi
 ```bash
 npm install
 npm run build
-npm run dev
+npm run dev -- --port 3000
 ```
 
 ### Development:
 
 ```bash
-npm run dev
+npm run dev -- --port 3000
+```
+
+### Production:
+
+```bash
+npm start
 ```
 
 ### With Docker:
