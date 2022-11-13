@@ -62,7 +62,7 @@ Tests are configured to run on multiple OS and Node.js versions to make sure the
 #### Test locally with `act`
 
 ```bash
-act -a tests
+act -j tests
 ```
 
 ### Deployment on Vercel
