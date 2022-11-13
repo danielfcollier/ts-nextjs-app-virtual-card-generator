@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import Generate from '@/pages/generate';
 
-it('renders homepage unchanged', () => {
+it('Snapshot of Generate page unchanged', () => {
   const { container } = render(<Generate />);
   expect(container).toMatchSnapshot();
 });

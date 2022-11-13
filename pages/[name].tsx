@@ -12,10 +12,10 @@ const sortWordsAscending = (a: string, b: string) => {
 
 export default function History() {
   const router = useRouter();
-  const { name } = router.query;
+  const { name } = router?.query ?? { name: '' };
 
   Object.keys(cards).forEach((key) => {
-    if (router.query[key]) {
+    if (router?.query[key]) {
       cards[key].url = router.query[key] as string;
     }
   });
