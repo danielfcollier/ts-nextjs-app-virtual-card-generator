@@ -2,16 +2,16 @@ import { ChangeEvent, FormEvent, useState, useRef, useEffect } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import download from 'downloadjs';
 import { toPng } from 'html-to-image';
-import QRCode from 'qrcode';
 
 import PageHeader from '@/components/PageHeader';
 import VirtualCard from '@/components/VirtualCard';
 
 import { Card, cards } from '../config/cards';
+import generateQrCode from '../lib/generateQrCode';
 
 const MILLISECONDS_TO_RELOAD = 2000;
 
-interface States {
+export interface States {
   name: string;
   qrCode: string;
   cards: Card;
@@ -51,21 +51,6 @@ export default function Generate() {
     }
   };
 
-  const addQueryString = (previousValue: string, currentValue: Card) => {
-    const url = currentValue.url as unknown as string;
-    if (url === '') {
-      return `${previousValue}`;
-    }
-
-    const queryParam = `${currentValue.id}=${currentValue.url}`;
-
-    if (previousValue.includes('=')) {
-      return `${previousValue}&${queryParam}`;
-    }
-
-    return `${previousValue}?${queryParam}`;
-  };
-
   const isFormInvalid = (form: HTMLFormElement) => {
     const isAnyElementInvalid = (previousValue: boolean, currentValue: Element) => {
       return currentValue.getAttribute('class')?.includes('is-invalid') || previousValue;
@@ -84,14 +69,9 @@ export default function Generate() {
       return;
     }
 
-    const baseUrl = `${process.env.NEXT_PUBLIC_HOST_URL}/${encodeURIComponent(states.name)}`;
-    const linkUrl = Object.keys(states.cards)
-      .map((key) => {
-        return { ...states.cards[key], id: key } as unknown as Card;
-      })
-      .reduce(addQueryString, baseUrl);
-    const qrCode = await QRCode.toDataURL(linkUrl);
+    const { qrCode, linkUrl } = await generateQrCode(states);
     console.log({ linkUrl }); // Just to make it easier to verify on the browser
+
     setStates({ ...states, qrCode });
     setValidated(true);
   };
