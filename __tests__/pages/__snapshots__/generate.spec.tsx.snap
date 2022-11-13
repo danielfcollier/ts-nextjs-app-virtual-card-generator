@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot of Generate page unchanged 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <h1
+      class="title"
+    >
+      QR Code Image Generator
+    </h1>
+    <form
+      class=""
+      novalidate=""
+    >
+      <div
+        class="mb-3 input-group"
+      >
+        <span
+          class="input-group-text"
+        >
+          Name
+        </span>
+        <input
+          class="form-control"
+          id="name"
+          required=""
+          value=""
+        />
+      </div>
+      <div
+        class="mb-3 input-group"
+      >
+        <span
+          class="input-group-text"
+        >
+          LinkedIn URL
+        </span>
+        <input
+          class="cards form-control"
+          id="linkedin"
+          required=""
+          value=""
+        />
+      </div>
+      <div
+        class="mb-3 input-group"
+      >
+        <span
+          class="input-group-text"
+        >
+          GitHub URL
+        </span>
+        <input
+          class="cards form-control"
+          id="github"
+          value=""
+        />
+      </div>
+      <button
+        class="button btn btn-outline-dark btn-lg"
+        type="submit"
+      >
+        Generate Image
+      </button>
+    </form>
+  </div>
+</div>
+`;

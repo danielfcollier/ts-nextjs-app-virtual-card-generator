@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot of Card [name] page unchanged 1`] = `
+<div>
+  <div
+    class="card-container"
+  >
+    <p>
+      Hello, my name is 
+    </p>
+    <h1>
+      My history
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur
+    </p>
+    <div
+      class="container"
+    >
+      <div
+        class="row row row-cols-sm-6 row-cols-2"
+      />
+    </div>
+  </div>
+</div>
+`;
